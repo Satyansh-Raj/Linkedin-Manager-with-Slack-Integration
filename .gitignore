@@ -1,0 +1,34 @@
+# -----------------------------
+# Secrets & Credentials
+# -----------------------------
+# NEVER push your actual environment variables!
+.env
+
+# -----------------------------
+# Application Data & State
+# -----------------------------
+# Ignore temporary downloads, state memory, and runtime logs
+drafts/
+state/
+logs/
+*.log
+
+# -----------------------------
+# Python Specific
+# -----------------------------
+# Ignore compiled bytecode and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# -----------------------------
+# OS & IDE Files
+# -----------------------------
+# Ignore system hidden files and code editor configs
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
