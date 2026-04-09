@@ -252,3 +252,5 @@ You can completely change the bot's base writing style without touching any Pyth
 - Want a specific structure? Add: `"Always start with a one-sentence hook, followed by a bulleted list."`
 
 The core rules live in this text file. Tone-specific instructions (technical depth, emotional register, hashtag usage) are injected dynamically from the Slack dropdown and do not need to be in the file.
+
+> **Note:** If you upgrade your account to use `gemini-2.5-pro` in `ai_module.py` later, you can write much more complex, multi-step reasoning instructions in your `prompt_template.txt`.
