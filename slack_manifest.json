@@ -1,0 +1,54 @@
+{
+  "_metadata": {
+    "major_version": 3,
+    "minor_version": 3
+  },
+  "display_information": {
+    "name": "LinkedIn Manager",
+    "description": "AI-powered LinkedIn post generator with tone control and media support.",
+    "background_color": "#0A66C2"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "LinkedIn Manager",
+      "always_online": true
+    },
+    "slash_commands": [
+      {
+        "command": "/clear",
+        "description": "Clears the bot's memory if a draft gets stuck.",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "chat:write",
+        "chat:write.public",
+        "channels:read",
+        "channels:history",
+        "groups:history",
+        "im:write",
+        "files:read",
+        "app_mentions:read",
+        "commands"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "bot_events": [
+        "app_mention",
+        "message.channels",
+        "message.groups"
+      ]
+    },
+    "interactivity": {
+      "is_enabled": true
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false
+  }
+}
