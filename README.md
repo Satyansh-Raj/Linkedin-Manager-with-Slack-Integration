@@ -208,12 +208,40 @@ The bot connects to Slack via Socket Mode and waits for your input. No server re
 
 ---
 
+## ☁️ Deployment (Always-On Setup)
+
+Because this bot uses Slack Socket Mode, you do not need a complex web server, static IP, or reverse proxy to keep it online. You can host this 24/7 on almost any basic cloud Virtual Private Server (VPS) running Linux.
+
+1. Provision a basic Linux server on your preferred cloud provider
+2. SSH into your server, clone the repository, and set up your environment variables just like the local setup
+3. To keep the bot running in the background after you close your SSH connection, use a terminal multiplexer like `tmux`:
+
+```bash
+# 1. Start a new background session
+tmux new -s linkedin_bot
+
+# 2. Activate environment and run
+source venv/bin/activate
+python main.py
+
+# 3. Detach from the session to keep it running forever:
+# Press Ctrl+B, release both keys, then press D
+```
+
+To view the bot's logs later, simply SSH back into your server and type:
+
+```bash
+tmux attach -t linkedin_bot
+```
+
+---
+
 ## Usage
 
 ### Creating a Post (Text Only)
 
 1. Go to `#linkedin-drafts` in Slack and type your raw notes
-2. The bot replies with a tone dropdown — select one:
+2. The bot replies with a tone dropdown:
 
 | Tone | Description |
 |---|---|
@@ -224,7 +252,7 @@ The bot connects to Slack via Socket Mode and waits for your input. No server re
 | **Professional / Corporate** | Crisp, ROI-focused, business language |
 | **Aggressive / Sales** | Bold, urgent, CTA-driven |
 
-3. Check `#linkedin-approvals`. The generated post appears with four buttons:
+3. Check `#linkedin-approvals`. The generated post appears with interactive buttons:
 
 | Button | Action |
 |---|---|
@@ -243,7 +271,7 @@ If a draft gets stuck in memory, type `/clear` in any channel to wipe the bot's 
 
 ---
 
-## Modifying the Prompt Engine
+## 🛠️ Modifying the Prompt Engine
 
 You can completely change the bot's base writing style without touching any Python code. Edit `prompt_template.txt` directly:
 
@@ -251,6 +279,6 @@ You can completely change the bot's base writing style without touching any Pyth
 - Hate emojis? Add: `"Strictly forbid the use of emojis."`
 - Want a specific structure? Add: `"Always start with a one-sentence hook, followed by a bulleted list."`
 
-The core rules live in this text file. Tone-specific instructions (technical depth, emotional register, hashtag usage) are injected dynamically from the Slack dropdown and do not need to be in the file.
+The core rules live in this text file. Tone-specific instructions (technical depth, emotional register) are injected dynamically from the Slack dropdown and do not need to be in the file.
 
 > **Note:** If you upgrade your account to use `gemini-2.5-pro` in `ai_module.py` later, you can write much more complex, multi-step reasoning instructions in your `prompt_template.txt`.
